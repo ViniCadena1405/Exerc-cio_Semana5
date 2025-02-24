@@ -186,21 +186,33 @@ somador.verTotal();
 
 ______
 
-**10)** Imagine que você está criando um programa em JavaScript para uma escola. Neste programa, existem diferentes tipos de funcionários, cada um com suas próprias características. Considere as seguintes classes:
+**10)** 
 
-Funcionário:
-- atributo: Nome
-- atributo: Idade
-- atributo: Salário base
-- método: calcularSalario() - Este método calcula o salário total do funcionário. Para cada tipo de funcionário, o cálculo será diferente.
+class Funcionário {
+    constructor(nome, idade, salárioBase) {
+        this.nome = nome;
+        this.idade = idade;
+        this.salárioBase = salárioBase;
+    }
+}
 
-Professor (herança de Funcionário):
-- atributo: Disciplina
-- atributo: Horas de aula por semana
-- método: calcularSalario() - Para calcular o salário do professor, multiplicamos suas horas de aula pelo valor da hora/aula.
+class Professor extends Funcionário {
+    constructor(nome, idade, salárioBase, disciplina, horaSemana) {
+        super(nome, idade, salárioBase);
+        this.disciplina = disciplina;
+        this.horaSemana = horaSemana;
+    }
 
-Agora, sua tarefa é escrever um código em JavaScript que crie as classes Funcionário e Professor, com suas características e métodos descritos acima. Depois de criar as classes, crie:
-- Dois objetos do tipo Professor com informações fictícias.
-- Para cada objeto, chame o método calcularSalario() e mostre o salário calculado no console.
+    //Cálculo do salário
 
-Certifique-se de explicar cada parte do código utilizando comentários, explicando para que serve cada atributo e método, bem como a lógica por trás do cálculo de salário para o tipo de funcionário Professor.
+    calcularSalário(aula) {
+        this.salárioBase = (this.horaSemana * (this.horaSemana / aula)).toFixed(2);
+        console.log(`Salário de ${this.nome}: ${this.salárioBase}`);
+    }
+}
+
+let professor1 = new Professor("Mario", 55, 25, "Matemática", 5);
+let professor2 = new Professor("Joana", 35, 20, "Física", 7);
+
+professor1.calcularSalário(3);
+professor2.calcularSalário(5);
