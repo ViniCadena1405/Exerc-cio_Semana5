@@ -1,9 +1,8 @@
 # Instruções
-
 - Faça uma cópia deste arquivo .md para um repositório próprio
-- Resolva as 6 questões objetivas assinalando a alternativa correta
-- Resolva as 4 questões dissertativas escrevendo no próprio arquivo .md
-  - lembre-se de utilizar as estruturas de código como ``esta aqui com ` `` ou
+- Resolva as 8 questões objetivas assinalando a alternativa correta e **justificando sua resposta.**
+- Resolva as 2 questões dissertativas escrevendo no próprio arquivo .md
+- Lembre-se de utilizar as estruturas de código como ``esta aqui com ` `` ou
 ```javascript
 //esta aqui com ```
 let a = "olá"
@@ -12,207 +11,221 @@ print(a)
 ```
 - Resolva as questões com uso do Visual Studio Code ou ambiente similar.
 - Teste seus códigos antes de trazer a resposta para cá.
-- Cuidado com ChatGPT e afins: entregar algo só para ganhar nota não faz você aprender e ficar mais inteligente. Não seja dependente da máquina!
-- ao final, publique seu arquivo lista_01.md com as respostas em seu repositório, e envie o link pela Adalove. 
+- Cuidado com o uso de ChatGPT (e similares), pois entregar algo só para ganhar nota não fará você aprender. Não seja dependente da máquina!
+- Ao final, publique seu arquivo lista_01.md com as respostas em seu repositório, e envie o link pela Adalove. 
 
 # Questões objetivas
+**1) Considerando a execução do código abaixo, indique a alternativa correta e justifique sua resposta.**
+```javascript
+console.log(x);
+var x = 5;
+console.log(y);
+let y = 10;
+```
+a) A saída será undefined seguido de erro 
 
-**1)** O que o código a seguir faz?
+b) A saída será 5 seguido de 10
 
-![Uma imagem](assets/ex01.PNG)
+c) A saída será undefined seguido de undefined
 
-Escolha a opção que responde corretamente:
+d) A saída será erro em ambas as linhas que utilizam console.log X
 
-a) Imprime os números pares de 1 a 10. X
 
-b) Imprime os números ímpares de 1 a 10.
+**2) O seguinte código JavaScript tem um erro que impede sua execução correta. Analise e indique a opção que melhor corrige o problema. Justifique sua resposta.**
 
-c) Imprime os números pares de 2 a 10.
+```javascript
+function soma(a, b) {
+    if (a || b === 0) {
+        return "Erro: número inválido";
+    }
+    return a + b;
+}
+console.log(soma(2, 0));
+```
 
-d) Imprime os números ímpares de 2 a 10.
+a) Substituir if (a || b === 0) por if (a === 0 || b === 0) X
+
+b) Substituir if (a || b === 0) por if (a === 0 && b === 0)
+
+c) Substituir if (a || b === 0) por if (a && b === 0)
+
+d) Remover completamente a verificação if (a || b === 0)
+
+______
+**3) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
+```javascript
+function calcularPreco(tipo) {
+    let preco;
+
+    switch(tipo) {
+        case "eletrônico":
+            preco = 1000;
+        case "vestuário":
+            preco = 200;
+            break;
+        case "alimento":
+            preco = 50;
+            break;
+        default:
+            preco = 0;
+    }
+
+    return preco;
+}
+
+console.log(calcularPreco("eletrônico"));
+```
+
+a) O código imprime 1000. X
+
+b) O código imprime 200.
+
+c) O código imprime 50.
+
+d) O código gera um erro.
+
+______
+**4) Ao executar esse código, qual será a saída no console? Indique a alternativa correta e justifique sua resposta.**
+```javascript
+let numeros = [1, 2, 3, 4, 5];
+
+let resultado = numeros.map(x => x * 2).filter(x => x > 5).reduce((a, b) => a + b, 0);
+
+console.log(resultado);
+```
+a) 0
+
+b) 6
+
+c) 18
+
+d) 24 X
+______
+**5) Qual será o conteúdo do array lista após a execução do código? Indique a alternativa correta e justifique sua resposta.**
+
+```javascript
+let lista = ["banana", "maçã", "uva", "laranja"];
+lista.splice(1, 2, "abacaxi", "manga");
+console.log(lista);
+```
+
+a) ["banana", "maçã", "uva", "abacaxi", "manga", "laranja"]
+
+b) ["banana", "abacaxi", "manga"]
+
+c) ["banana", "abacaxi", "manga", "laranja"] X
+
+d) ["banana", "maçã", "uva", "abacaxi", "manga"]
+______
+**6) Abaixo há duas afirmações sobre herança em JavaScript. Indique a alternativa correta e justifique sua resposta**
+
+I. A herança é utilizada para compartilhar métodos e propriedades entre classes em JavaScript, permitindo que uma classe herde os métodos de outra sem a necessidade de repetir código.  
+II. Em JavaScript, a herança é implementada através da palavra-chave `extends`.
+
+
+a) As duas afirmações são verdadeiras, e a segunda justifica a primeira. X
+
+b) As duas afirmações são verdadeiras, mas a segunda não justifica a primeira.
+
+c) A primeira afirmação é verdadeira, e a segunda é falsa.
+
+d) A primeira afirmação é falsa, e a segunda é verdadeira.
+______
+**7) Dado o seguinte código. Indique a alternativa correta e justifique sua resposta.**
+
+```javascript
+class Pessoa {
+  constructor(nome, idade) {
+    this.nome = nome;
+    this.idade = idade;
+  }
+
+  apresentar() {
+    console.log(`Olá, meu nome é ${this.nome} e tenho ${this.idade} anos.`);
+  }
+}
+
+class Funcionario extends Pessoa {
+  constructor(nome, idade, salario) {
+    super(nome, idade);
+    this.salario = salario;
+  }
+
+  apresentar() {
+    super.apresentar();
+    console.log(`Meu salário é R$ ${this.salario}.`);
+  }
+}
+```
+
+
+I) A classe Funcionario herda de Pessoa e pode acessar os atributos nome e idade diretamente.  
+II) O método `apresentar()` da classe Funcionario sobrepõe o método `apresentar()` da classe Pessoa, mas chama o método da classe pai usando `super`.  
+III) O código não funciona corretamente, pois Funcionario não pode herdar de Pessoa como uma classe, já que o JavaScript não suporta herança de classes.
+
+Quais das seguintes afirmações são verdadeiras sobre o código acima?
+
+a) I e II são verdadeiras. X
+
+b) I, II e III são verdadeiras.
+
+c) Apenas II é verdadeira.
+
+d) Apenas I é verdadeira.
 
 ______
 
-**2)** Identificar a linha que falta no código para criar uma classe Veiculo com atributo marca, e uma classe Carro que herda de Veiculo com um método ligar(). 
+**8) Analise as afirmações a seguir. Indique a alternativa correta e justifique sua resposta.**
 
-![Uma imagem](assets/ex02.PNG)
+**Asserção:** O conceito de polimorfismo em Programação Orientada a Objetos permite que objetos de diferentes tipos respondam à mesma mensagem de maneiras diferentes.  
+**Razão:** Em JavaScript, o polimorfismo pode ser implementado utilizando o método de sobrecarga de métodos em uma classe.
 
-No lugar onde está escrito “// linha” qual das opções abaixo deve estar para funcionar corretamente o código?
+a) A asserção é falsa e a razão é verdadeira.
 
-A) let carro = new Carro("Toyota"); X
+b) A asserção é verdadeira e a razão é falsa.
 
-B) let ligar = new ligar("Toyota");
+c) A asserção é verdadeira e a razão é verdadeira, mas a razão não explica a asserção.
 
-C) class Moto extends Veiculo {};
-
-D) carro1.ligar();
-
-______
-
-**3)** Qual é o valor de resultado após a execução deste código?
-
-![Uma imagem](assets/ex03.PNG)
-
-Escolha a opção que responde corretamente:
-
-A) 18 X
-
-B) 16
-
-C) 14
-
-D) 12
-
-______
-
-**4)** Como você criaria um método `acelerar()` em uma classe `Carro`, que recebe um parâmetro `velocidade` e o adiciona a um atributo `velocidadeAtual`?
-
-A) ![Uma imagem](assets/ex04_1.PNG) X
-
-B) ![Uma imagem](assets/ex04_2.PNG)
-
-C) ![Uma imagem](assets/ex04_3.PNG)
-
-D) ![Uma imagem](assets/ex04_4.PNG)
-
-______
-
-**5)** Qual a forma correta de definir uma classe Carro em JavaScript, com um método ligar() e um atributo marca?
-
-A) ![Uma imagem](assets/ex05_1.PNG) X
-
-B) ![Uma imagem](assets/ex05_2.PNG)
-
-C) ![Uma imagem](assets/ex05_3.PNG)
-
-D) ![Uma imagem](assets/ex05_4.PNG)
-
-______
-
-**6)** Observe o código abaixo:
-
-![Uma imagem](assets/ex06.PNG)
-
-Qual será a saída do código acima?
-
-A) "Olá, meu nome é João. Olá, meu nome é Maria." X
-
-B) "Olá, meu nome é ."
-
-C) "João Maria"
-
-D) "undefined undefined"
+d) A asserção é verdadeira e a razão é verdadeira, e a razão explica a asserção. X
 
 ______
 
 # Questões dissertativas
+9)  function somaArray(numeros) {
+    var soma = 0;
 
-**7)** 
-
-class Animal {
-    constructor(nome, idade) {
-        this.nome = nome;
-        this.idade = idade;
+    for(let i = 0; i <= numeros.length - 1; i++) {
+        soma += 2 * numeros[i];
     }
 
-    descrever() {
-        console.log(`Nome: ${this.nome}, Idade: ${this.idade}`)
-    }
+    return soma;
 }
 
-let animal1 = new Animal("Cachorro", 10);
-let animal2 = new Animal("Gato", 5);
-
-animal1.descrever();
-animal2.descrever();
-
+console.log(somaArray([1, 2, 3, 4]))
 ______
-
-**8)** 
-
-class Animal {
-    constructor(nome, idade) {
+10) class Produto {
+    constructor(nome, preço) {
         this.nome = nome;
-        this.idade = idade;
+        this.preço = preço;
     }
 
-    descrever() {
-        console.log(`Nome: ${this.nome}, Idade: ${this.idade}`)
-    }
-}
-
-class Gato extends Animal {
-    constructor(nome, idade, cor) {
-        super(nome, idade);
-        this.cor = cor;
-    }
-
-    miar() {
-        console.log("Miau!!!")
+    calcularDesconto() {
+        var oferta = this.preço - (this.preço * 0.1);
+        console.log(`${this.nome} está com 10% de desconto!!! Apenas R$ ${oferta},00!!!`)
     }
 }
 
-let cachorro = new Animal("Cachorro", 10);
-let gato = new Gato("Gato", 5, "Preto");
-
-cachorro.descrever();
-gato.descrever();
-gato.miar();
-
-
-______
-
-**9)** 
-
-class SomadordeNotas {
-    constructor(total = 0) {
-        this.total = total
+class Livro extends Produto {
+    constructor(nome, preço) {
+        super(nome, preço)
     }
 
-    adicionarNota(nota) {
-        this.total += nota
-    }
-
-    verTotal() {
-        console.log(`Nota: ${this.total}`);
+    calcularDesconto() {
+        var oferta = this.preço - (this.preço * 0.2);
+        console.log(`O livro ${this.nome} está com 20% de desconto!!! Apenas R$ ${oferta},00!!!`)
     }
 }
 
-let somador = new SomadordeNotas();
-somador.adicionarNota(6);
-somador.adicionarNota(3);
-somador.verTotal();
+var liv = new Livro("O Senhor dos Anéis", 450);
 
-
-______
-
-**10)** 
-
-class Funcionário {
-    constructor(nome, idade, salárioBase) {
-        this.nome = nome;
-        this.idade = idade;
-        this.salárioBase = salárioBase;
-    }
-}
-
-class Professor extends Funcionário {
-    constructor(nome, idade, salárioBase, disciplina, horaSemana) {
-        super(nome, idade, salárioBase);
-        this.disciplina = disciplina;
-        this.horaSemana = horaSemana;
-    }
-
-    //Cálculo do salário
-
-    calcularSalário(aula) {
-        this.salárioBase = (this.horaSemana * (this.horaSemana / aula)).toFixed(2);
-        console.log(`Salário de ${this.nome}: ${this.salárioBase}`);
-    }
-}
-
-let professor1 = new Professor("Mario", 55, 25, "Matemática", 5);
-let professor2 = new Professor("Joana", 35, 20, "Física", 7);
-
-professor1.calcularSalário(3);
-professor2.calcularSalário(5);
+liv.calcularDesconto();
